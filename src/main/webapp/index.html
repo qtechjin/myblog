@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <!--<meta http-equiv="content-type" content="text/html;charset=utf-8" >-->
+    <!--<meta charset="UTF-8">-->
+</head>
+<title>测试</title>
+<style>
+    .table-c table{border-right: 1px solid #F00; border-bottom: 1px solid #F00}
+    .table-c table td{border-left: 1px solid #F00; border-top: 1px solid #F00}
+    .btn-common {
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+    }
+</style>
+<script type="text/javascript">
+    function register() {
+        alert("注册信息");
+        Window.location.href="views/register.html";
+    }
+    function lighton() {
+        document.getElementById("myimg").src="./views/images/eg_bulbon.gif";
+    }
+    function lightoff() {
+        document.getElementById("myimg").src="./views/images/eg_bulboff.gif";
+    }
+</script>
+<body>
+<h2>Hello World!</h2>
+
+    <a href="servlet/user">user</a>
+    <a href="servlet/book">book</a>
+    <a href="servlet/order">order</a>
+    <br>
+    <form name="userinfo" method="post" action="login">
+        <div class="table-c">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td><p align="center">用户名</p></td>
+                <td><input type="text" name="username" value= ""></td>
+            </tr>
+            <tr>
+                <td><p align="center">密　码</p></td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <p align="center">
+                    <button type="button" class="btn btn-common">。。 </button>
+                    <input type="submit" name="Submit" value="login">
+                    <a href="register">注册</a>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </form>
+    <a href="">login</a><br>
+<img src="views/images/eg_bulboff.gif" id="myimg" onmousedown="lighton()" onmouseup="lightoff()">
+</body>
+</html>

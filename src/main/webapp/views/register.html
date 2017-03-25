@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册用户</title>
+</head>
+<script type="text/javascript">
+    function back() {
+        window.history.back(-1);
+    }
+</script>
+<body>
+<form action="" method="POST">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"></td>
+        </tr><tr>
+            <td>邮  箱</td>
+            <td><input type="email" name="email"></td>
+        </tr><tr>
+            <td>性  别</td>
+            <td><input type="text" name="gender"></td>
+        </tr><tr>
+            <td>密  码</td>
+            <td><input type="password" name="password"></td>
+        </tr><tr>
+            <td>确认密码</td>
+            <td><input type="password" name="confirmpwd"></td>
+        </tr>
+        <tr >
+            <td colspan="2">
+                <p align="center"><input type="submit" name="Submit" value="注册">
+                    <input name="register" type="button" value="返回" onclick="back()"></p>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
