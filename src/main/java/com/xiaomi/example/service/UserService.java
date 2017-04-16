@@ -2,11 +2,14 @@ package com.xiaomi.example.service;
 
 import com.xiaomi.example.pojo.User;
 
+import javax.jws.WebService;
+
 /**
  * Created by mi on 2017/3/21.
  */
+@WebService(endpointInterface = "com.xiaomi.example.service.UserService", targetNamespace = "http://impl.service.example.xiaomi.com")
 public interface UserService {
-    boolean login(String userName, String password);
+    public boolean login(String userName, String password);
 
     public boolean register(User user);
 

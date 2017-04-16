@@ -25,6 +25,8 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean register(User user) {
+        String password = user.getPassword();
+        user.setPassword(SecurityUtils.md5AndBase64Encrypt(password));
         if(userRepository.insertUser(user)) {
             return true;
         } else {
