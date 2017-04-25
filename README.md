@@ -26,4 +26,6 @@ mofify at github
 
 test fetch
 
-this is a branch from dev!
+this is a branch from dev but not master!
+
+just test commit and merge.
