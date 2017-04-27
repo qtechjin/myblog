@@ -59,4 +59,6 @@ public interface UserDAO {
     Long insertBatch(List users);
 
     UserDO selectByUserName(String userName);
+
+    UserDO selectByNameAndEmail(String userName, String email);
 }

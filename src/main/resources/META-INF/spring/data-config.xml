@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  import data config -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list><value>classpath:config/c3p0.properties</value></list>
+        </property>
+    </bean>
+    <bean id="bgDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="${c3p0.jdbcUrl}" />
+        <property name="username" value="${c3p0.user}" />
+        <property name="password" value="${c3p0.password}" />
+    </bean>
+    <bean id="bgSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocation">
+            <value>classpath:META-INF/sqlmap/bookmanage-sqlmap.xml</value>
+        </property>
+    </bean>
+    <bean id="bgBaseSqlMapClientDAO" abstract="true">
+        <property name="sqlMapClient" ref="bgSqlMapClient" />
+        <property name="dataSource" ref="bgDataSource" />
+    </bean>
+    <bean id="bookDAO" class="com.xiaomi.example.dal.dao.impl.BookDAOImpl" parent="bgBaseSqlMapClientDAO" />
+    <bean id="orderDAO" class="com.xiaomi.example.dal.dao.impl.OrderDAOImpl" parent="bgBaseSqlMapClientDAO" />
+    <bean id="userDAO" class="com.xiaomi.example.dal.dao.impl.UserDAOImpl" parent="bgBaseSqlMapClientDAO" />
+
+</beans>

@@ -4,7 +4,9 @@ import com.xiaomi.example.dal.dao.UserDAO;
 import com.xiaomi.example.dal.dataobject.UserDO;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
 
@@ -38,8 +40,14 @@ public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
      * @ibatorgenerated Tue Feb 28 18:27:05 CST 2017
      */
     public Integer insert(UserDO record) {
-        Object newKey = getSqlMapClientTemplate().insert("tb_user_insert", record);
-        return (Integer) newKey;
+        Object newKey = 0;
+        try{
+            newKey = getSqlMapClientTemplate().insert("tb_user_insert", record);
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            return (Integer) newKey;
+        }
     }
 
     /**
@@ -91,7 +99,6 @@ public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
     }
 
     public List selectByUserNames(List userNames) {
-
         return getSqlMapClientTemplate().queryForList("tb_user_selectByUserNames", userNames);
     }
 
@@ -101,7 +108,18 @@ public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
 
     public UserDO selectByUserName(String userName) {
         System.out.println("正在查找:" + userName);
+        Map params = new HashMap();
+        params.put("userName", userName);
         return (UserDO) getSqlMapClientTemplate().queryForObject("tb_user_selectByUserName", userName);
     }
+
+    public UserDO selectByNameAndEmail(String userName, String email) {
+        System.out.println("正在查找:" + userName);
+        Map params = new HashMap();
+        params.put("userName", userName);
+        params.put("email", email);
+        return (UserDO) getSqlMapClientTemplate().queryForObject("tb_user_selectByNameAndEmail", params);
+    }
+
 
 }

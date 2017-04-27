@@ -117,7 +117,7 @@
     where user_id = #userId:INTEGER#
   </update>
 
-  <select id="tb_user_selectByUserNames" parameterClass="java.util.List">
+  <select id="tb_user_selectByUserNames" parameterClass="java.util.List" resultMap="tb_user_BaseResultMap">
     <![CDATA[
       SELECT * FROM tb_user WHERE user_name IN
     ]]>
@@ -128,8 +128,11 @@
     </iterate>
   </select>
 
-  <select id="tb_user_selectByUserName" parameterClass="java.lang.String">
-    SELECT * FROM tb_user WHERE user_name = #userName:VARCHAR#
+  <select id="tb_user_selectByUserName" resultMap="tb_user_BaseResultMap">
+    SELECT * FROM tb_user WHERE user_name = #value:VARCHAR#
+  </select>
+  <select id="tb_user_selectByNameAndEmail" resultMap="tb_user_BaseResultMap">
+    select * from tb_user where user_name = #userName:VARCHAR# and email = #email:VARCHAR#
   </select>
 
   <insert id="tb_user_insertBatch" parameterClass="java.util.List">

@@ -14,6 +14,12 @@
     }
 </style>
 <script type="text/javascript">
+    function login() {
+        var username = document.getElementById("username");
+        if(username.validity.patternMismatch){
+            alert("name type error");
+        }
+    }
     function register() {
         alert("注册信息");
         Window.location.href="views/register.html";
@@ -37,7 +43,7 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td><p align="center">用户名</p></td>
-                <td><input type="text" name="username" value= ""></td>
+                <td><input type="text" id="username" value= "" pattern="(\w)+(\.\w+)*@(\w)+((\.\w+)+)"></td>
             </tr>
             <tr>
                 <td><p align="center">密　码</p></td>
@@ -47,7 +53,7 @@
                 <td colspan="2">
                 <p align="center">
                     <button type="button" class="btn btn-common">。。 </button>
-                    <input type="submit" name="Submit" value="login">
+                    <button type="submit" name="submit" onclick="login()">login</button>
                     <a href="register">注册</a>
                 </td>
             </tr>
@@ -55,6 +61,6 @@
         </div>
     </form>
     <a href="">login</a><br>
-<img src="views/images/eg_bulboff.gif" id="myimg" onmousedown="lighton()" onmouseup="lightoff()">
+<img src="img/eg_bulboff.gif" id="myimg" onmousedown="lighton()" onmouseup="lightoff()">
 </body>
 </html>

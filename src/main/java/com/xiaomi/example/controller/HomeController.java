@@ -1,5 +1,6 @@
 package com.xiaomi.example.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.xiaomi.example.pojo.User;
 import com.xiaomi.example.service.UserService;
 import org.apache.log4j.Logger;
@@ -40,27 +41,32 @@ public class HomeController {
         } else {
             System.out.println("没有这个用户或者密码错误");
         }
+
         return "login";
     }
 
     @RequestMapping(value = "/register", method = GET)
-    public String register(){
+    public String register(HttpServletRequest request){
         return "register";
     }
 
     @RequestMapping(value = "/register", method = POST)
     public String registerUser(HttpServletRequest request, HttpServletResponse response){
         User user = new User();
+        logger.info(JSON.toJSONString(request.getParameterNames()));
         user.setUserName(request.getParameter("username"));
         user.setEmail(request.getParameter("email"));
         user.setGender(request.getParameter("gender"));
         user.setPassword(request.getParameter("password"));
+        logger.info("[CONTROLLER]:用户注册信息:" + JSON.toJSONString(user));
         if(userService.register(user)){
             logger.info("[CONTROLLER]:用户注册成功!");
-            return "register";
+            return "success";
         } else {
             logger.info("[CONTROLLER]:用户注册失败!");
-            return "registersuccess";
+            return "register";
         }
     }
+
+
 }

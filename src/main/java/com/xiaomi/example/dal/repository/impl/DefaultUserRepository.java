@@ -18,12 +18,16 @@ public class DefaultUserRepository implements UserRepository {
         return UserConvert.convert( userDAO.selectByUserName(userName) );
     }
 
-    public boolean insertUser(User user) {
+    public boolean insertUser(User user){
         if(userDAO.insert(UserConvert.convert(user)) != 0 ) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public User loadByUserId(int userId){
+        return UserConvert.convert(userDAO.selectByPrimaryKey(userId));
     }
 
     public void updateByUserName(User user) {
