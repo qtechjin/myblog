@@ -10,3 +10,5 @@ test rebase 2
 to test rebase
 
 test rebase local 1
+
+test rebase local 2
