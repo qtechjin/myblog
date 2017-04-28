@@ -12,3 +12,11 @@ to test rebase
 test rebase local 1
 
 test rebase local 2
+
+test commit merge 1
+
+test commit merge 2
+
+test commit merge 3
+
+test commit merge 4
