@@ -1,15 +1,19 @@
 package com.xiaomi.example.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.xiaomi.example.pojo.User;
 import com.xiaomi.example.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -31,18 +35,23 @@ public class HomeController {
 //        response.setContentType("text/html;charset=UTF-8");
         return "../index";
     }
+
     @RequestMapping(value = "/login",method = POST)
-    public String login(HttpServletRequest request, HttpServletResponse response){
+    @ResponseBody
+    public JSONObject login(HttpSession session, @RequestBody JSONObject json){
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = json.getString("username");
+        String password = json.getString("password");
+        logger.info("[CONTROLLER]:" + username + " is login now");
         if(userService.login(username, password)){
-            System.out.println("denglu success");
+            session.setAttribute("username", username);
+            json.put("result", "OK");
+            logger.info(username + " login success");
         } else {
-            System.out.println("没有这个用户或者密码错误");
+            json.put("result", "NO");
+            logger.info(username + " login failed");
         }
-
-        return "login";
+        return json;
     }
 
     @RequestMapping(value = "/register", method = GET)

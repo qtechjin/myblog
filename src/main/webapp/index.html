@@ -2,6 +2,7 @@
 <head>
     <!--<meta http-equiv="content-type" content="text/html;charset=utf-8" >-->
     <!--<meta charset="UTF-8">-->
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
 </head>
 <title>测试</title>
 <style>
@@ -15,10 +16,27 @@
 </style>
 <script type="text/javascript">
     function login() {
-        var username = document.getElementById("username");
-        if(username.validity.patternMismatch){
-            alert("name type error");
-        }
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var login_error = document.getElementById("login_error");
+        $.ajax({
+            type: "POST",
+            url: "login",
+            contentType:"application/json;charset=utf-8",
+            dataType: "text",
+            data: JSON.stringify({"username":username, "password":password}),
+            success: function (data) {
+                var json = JSON.parse(data);
+                if(json.result == "OK"){
+                    location.href="views/loginsuccess.html";
+                    login_error.text="";
+                } else {
+                    alert("no user or password error");
+                    login_error.text="no user or password error";
+                }
+            }
+        });
+
     }
     function register() {
         alert("注册信息");
@@ -44,21 +62,23 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td><p align="center">用户名</p></td>
-                <td><input type="text" id="username" value= "" pattern="(\w)+(\.\w+)*@(\w)+((\.\w+)+)"></td>
+                <td><input type="text" id="username" value= "" required autofocus></td>
             </tr>
             <tr>
                 <td><p align="center">密　码</p></td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" id="password" required></td>
             </tr>
             <tr>
                 <td colspan="2">
                 <p align="center">
                     <button type="button" class="btn btn-common">。。 </button>
-                    <button type="submit" name="submit" onclick="login()">login</button>
+                    <button type="button" class="btn btn-common" onclick="login()">login</button>
                     <a href="register">注册</a>
                 </td>
             </tr>
         </table>
+            <br>
+            <span id="login_error"></span>
         </div>
     </form>
     <a href="">login</a><br>

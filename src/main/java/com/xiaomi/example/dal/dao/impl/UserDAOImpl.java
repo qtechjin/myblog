@@ -107,14 +107,12 @@ public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
     }
 
     public UserDO selectByUserName(String userName) {
-        System.out.println("正在查找:" + userName);
         Map params = new HashMap();
         params.put("userName", userName);
         return (UserDO) getSqlMapClientTemplate().queryForObject("tb_user_selectByUserName", userName);
     }
 
     public UserDO selectByNameAndEmail(String userName, String email) {
-        System.out.println("正在查找:" + userName);
         Map params = new HashMap();
         params.put("userName", userName);
         params.put("email", email);

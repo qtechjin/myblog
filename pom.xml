@@ -159,6 +159,12 @@
       <artifactId>maven-resources-plugin</artifactId>
       <version>3.0.2</version>
     </dependency>
+    <!-- handle request body -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
   </dependencies>
   <profiles>
     <profile>
@@ -169,7 +175,7 @@
       <properties>
         <config.env.dir>local</config.env.dir>
         <maven.sys.log.encoding>utf-8</maven.sys.log.encoding>
-        <maven.sys.path.logapp>/E:/logs/maventexample</maven.sys.path.logapp>
+        <maven.sys.path.logapp>/home/liujin/work/project/logs/maventexample</maven.sys.path.logapp>
       </properties>
     </profile>
     <profile>

@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public boolean login(String userName, String password) {
-        System.out.println(userName + "正在登录...");
         User user = userRepository.loadByUserName(userName);
         if(user != null && SecurityUtils.md5AndBase64Validate(password, user.getPassword())) {
             return true;
