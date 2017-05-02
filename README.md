@@ -1,8 +1,6 @@
 # BookManage
 a test with maven ,spring and spring mvc
 
-<<<<<<< HEAD
-
 just dev
 
 test rebase 1
@@ -31,14 +29,3 @@ this is a branch from dev but not master!
 
 just test commit and merge.
 
-just dev
-
-test rebase 1
-
-test rebase 2
-
-to test rebase
-
-test rebase local 1
-
-test rebase local 2
