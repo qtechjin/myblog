@@ -14,4 +14,6 @@ public interface UserService {
     public boolean register(User user);
 
     public boolean modifyInfo(User user);
+
+    public User getUserByName(String userName);
 }

@@ -33,4 +33,8 @@ public class DefaultUserRepository implements UserRepository {
     public void updateByUserName(User user) {
 
     }
+
+    public User getUserByName(String userName) {
+        return UserConvert.convert(userDAO.selectByUserName(userName));
+    }
 }

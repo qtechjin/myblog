@@ -37,4 +37,8 @@ public class UserServiceImpl implements UserService {
 
         return true;
     }
+
+    public User getUserByName(String userName) {
+        return null;
+    }
 }

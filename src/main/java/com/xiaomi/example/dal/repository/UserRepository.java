@@ -11,4 +11,6 @@ public interface UserRepository {
     public boolean insertUser(User user);
 
     public void updateByUserName(User user);
+
+    public User getUserByName(String userName);
 }

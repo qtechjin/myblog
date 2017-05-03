@@ -38,9 +38,24 @@
         });
 
     }
+    function toLogin() {
+        $.ajax({
+            type: "POST",
+            url: "login",
+            contentTYpe: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({"lastPage":window.location.pathname}),
+            success: function (data){
+
+            }
+        });
+    }
     function register() {
         alert("注册信息");
-        Window.location.href="views/register.html";
+        $.ajax({
+            type: "GET",
+            url: "register",
+        });
     }
     function lighton() {
         document.getElementById("myimg").src="c";
@@ -71,9 +86,9 @@
             <tr>
                 <td colspan="2">
                 <p align="center">
-                    <button type="button" class="btn btn-common">。。 </button>
                     <button type="button" class="btn btn-common" onclick="login()">login</button>
-                    <a href="register">注册</a>
+                    <button type="button" class="btn btn-common" onclick="register()">register</button>
+                    <a href="views/register.html">注册</a>
                 </td>
             </tr>
         </table>

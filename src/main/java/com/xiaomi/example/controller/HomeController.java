@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -55,8 +56,11 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/register", method = GET)
-    public String register(HttpServletRequest request){
-        return "register";
+    public ModelAndView register(HttpServletRequest request){
+        logger.info("[CONTROLLER]: jump to register");
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("register");
+        return mav;
     }
 
     @RequestMapping(value = "/register", method = POST)
@@ -75,6 +79,19 @@ public class HomeController {
             logger.info("[CONTROLLER]:用户注册失败!");
             return "register";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getUserByName", method = GET)
+    public JSONObject getUserByName(HttpSession session, @RequestBody JSONObject data) {
+        String userName = data.getString("userName");
+        logger.info("[CONTROLLER]:get user by name:" + userName);
+        if(userService.getUserByName(userName) != null) {
+            data.put("result", "YES");
+        } else {
+            data.put("result", "NO");
+        }
+        return data;
     }
 
 

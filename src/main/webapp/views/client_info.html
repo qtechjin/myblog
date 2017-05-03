@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>client</title>
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js" ></script>
+    <script type="text/javascript" src="js/commons.js"></script>
 </head>
-<script type="text/javascript" src="http://counter.sina.com.cn/ip/" charset="GB2312">
-    document.getElementById("clientinfo").innerHTML = ILData[0];
+<script type="text/javascript" >
+    $(function () {
+        var client = $("#clientinfo")[0];
+        client.innerHTML = "sdsd";
+
+
+        var pathName = location.pathname;
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf("/")+1);
+       $("#clientinfo").html(getProjectName()) ;
+
+        $("#show").click(function () {
+            alert($("#clientinfo").html());
+        });
+    });
 </script>
 <body>
 client info
     <p id="clientinfo"></p>
+<button id="show" >show</button>
 </body>
 </html>
