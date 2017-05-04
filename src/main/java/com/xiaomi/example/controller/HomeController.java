@@ -2,6 +2,7 @@ package com.xiaomi.example.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 import com.xiaomi.example.pojo.User;
 import com.xiaomi.example.service.UserService;
 import org.apache.log4j.Logger;
@@ -15,6 +16,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -94,5 +97,14 @@ public class HomeController {
         return data;
     }
 
+    @ResponseBody
+    @RequestMapping(value="/getUserList", method = GET, produces = "text/plain;charset=UTF-8")
+    public String getUserList(){
+        List listUser = userService.getUserListPaging(1, 5L);
+        Gson gson = new Gson();
+        String userListInfo = gson.toJson(listUser);
+        logger.info("get user list:" + userListInfo);
+        return userListInfo;
+    }
 
 }

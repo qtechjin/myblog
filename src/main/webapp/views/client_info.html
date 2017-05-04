@@ -17,13 +17,74 @@
        $("#clientinfo").html(getProjectName()) ;
 
         $("#show").click(function () {
-            alert($("#clientinfo").html());
+            //get user info from database
+            var url = getProjectName() + "/getUserList";
+            $.ajax({
+                url: url,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                data:"",
+                success:function (data) {
+
+                    var listUser = JSON.parse(data);
+                    $("#clientinfo").html(listUser[0].userName);
+                    var tr = $("userInfo");
+                    $.each (listUser, function (index, item){
+                        var cloneTr = tr.clone();
+                        var _index = index;
+                        cloneTr.children("td").each(function (inner_index) {
+                            switch (inner_index){
+                                case (0):
+                                    $(this).html(_index+1);
+                                    break;
+                                case (1):
+                                    $(this).html(item.userName);
+                                    break;
+                                case (2):
+                                    $(this).html(item.email);
+                                    break;
+                                case (3):
+                                    $(this).html(item.gender);
+                                    break;
+                            }
+                        });
+                        cloneTr.append(tr);
+                    });
+                }
+            });
+
         });
     });
 </script>
+<style type="text/css">
+    table{border-collapse:collapse;width:500px; }
+    table,th,td{border:1px solid black;text-align:center; }
+</style>
 <body>
 client info
     <p id="clientinfo"></p>
+<br/>
+<table id="userInfoTable" style="border: 2px; display: table;">
+
+    <thead>
+        <tr>
+            <th style="width: 10%;">username</th>
+            <th style="width: 10%;">email</th>
+            <th style="width: 10%;">gender</th>
+            <th style="width: 10%;">id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="userInfo">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+
+</table>
+<br/>
 <button id="show" >show</button>
 </body>
 </html>

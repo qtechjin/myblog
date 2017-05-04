@@ -145,4 +145,9 @@
       ]]>
     </iterate>
   </insert>
+
+  <select id="tb_user_loadUsersByPaging" resultMap="tb_user_BaseResultMap">
+    SELECT * FROM tb_user
+    limit #startNo#, #pageSize#
+  </select>
 </sqlMap>

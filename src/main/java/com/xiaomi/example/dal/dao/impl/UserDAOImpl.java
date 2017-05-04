@@ -119,5 +119,12 @@ public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
         return (UserDO) getSqlMapClientTemplate().queryForObject("tb_user_selectByNameAndEmail", params);
     }
 
+    public List loadUsersByPaging(Long startNo, Long pageSize)  {
+        Map params = new HashMap();
+        params.put("startNo", startNo);
+        params.put("pageSize", pageSize);
+        return (List) getSqlMapClientTemplate().queryForList("tb_user_loadUsersByPaging", params);
+    }
+
 
 }

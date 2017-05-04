@@ -6,6 +6,7 @@ import com.xiaomi.example.service.UserService;
 import com.xiaomi.example.utils.SecurityUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by mi on 2017/3/21.
@@ -40,5 +41,9 @@ public class UserServiceImpl implements UserService {
 
     public User getUserByName(String userName) {
         return null;
+    }
+
+    public List getUserListPaging(int nowPage, Long pageSize) {
+        return userRepository.getUserListPaging(nowPage-1, pageSize);
     }
 }

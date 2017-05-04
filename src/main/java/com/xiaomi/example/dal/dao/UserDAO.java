@@ -61,4 +61,6 @@ public interface UserDAO {
     UserDO selectByUserName(String userName);
 
     UserDO selectByNameAndEmail(String userName, String email);
+
+    List loadUsersByPaging(Long startNo, Long pageSize);
 }
