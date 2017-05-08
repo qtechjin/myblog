@@ -99,8 +99,10 @@ public class HomeController {
 
     @ResponseBody
     @RequestMapping(value="/getUserList", method = GET, produces = "text/plain;charset=UTF-8")
-    public String getUserList(){
-        List listUser = userService.getUserListPaging(1, 5L);
+    public String getUserList(HttpServletRequest request){
+        int page = Integer.valueOf(request.getParameter("page"));
+        logger.info("正在请求的时第" + page + "页");
+        List listUser = userService.getUserListPaging(page, 2L);
         Gson gson = new Gson();
         String userListInfo = gson.toJson(listUser);
         logger.info("get user list:" + userListInfo);
