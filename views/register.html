@@ -14,15 +14,35 @@
         window.history.back(-1);
     }
     function nameVerify() {
-        var username = document.getElementById("username").value;
+        var userName = document.getElementById("username").value;
         var nameVerify = document.getElementById("nameVerify");
-        if(username != null && username != "") {
+        if(userName != null && userName != "") {
             nameVerify.innerHTML = "";
-            return true;
         } else {
             nameVerify.innerHTML = "用户名不能为空";
             return false;
         }
+        // look name is exist
+        var url = "";
+        alert(url);
+        /*$.ajax({
+            type: "GET",
+            url: url,
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            data: {"userName": userName},
+            success: function (data) {
+                var json = JSON.parse(data);
+                if(json.result=="YES") {
+                    //exist user
+                    nameVerify.innerHTML = "there had a user";
+                    return false;
+                } else {
+                    nameVerify.innerHTML = "";
+                    return true;
+                }
+            }
+        });*/
     }
     function emailVerify() {
         var email = document.getElementById("email").value;
@@ -104,31 +124,30 @@
         <tr>
             <td>用户名</td>
             <td><input type="text" id="username" onchange="nameVerify()" required></td>
-            <td><p id="nameVerify"></p></td>
+            <td><span id="nameVerify"></span></td>
         </tr><tr>
-            <td>邮  箱</td>
-            <td><input type="email" id="email" pattern="(\w)+(\.\w+)*@(\w)+((\.\w+)+)" onchange="emailVerify()"></td>
-            <td><p id="emailVerify"></p></td>
+            <td>邮&nbsp;&nbsp;箱</td>
+            <td><input type="email" id="email" pattern="(\w)+(\.\w+)*@(\w)+((\.\w+)+)" onchange="emailVerify()" required></td>
+            <td><span id="emailVerify"></span></td>
         </tr><tr>
-            <td>性  别</td>
+            <td>性&nbsp;&nbsp;别</td>
             <td><select id="gender">
                 <option>男</option>
                 <option>女</option>
                 <option>保密</option>
             </select> </td>
         </tr><tr>
-            <td>密  码</td>
-            <td><input type="password" id="password" onchange="passwordVerify()"></td>
-            <td><p id="passwordVerify"></p></td>
+            <td>密&nbsp;&nbsp;码</td>
+            <td><input type="password" id="password" onchange="passwordVerify() " required></td>
+            <td><span id="passwordVerify"></span></td>
         </tr><tr>
             <td>确认密码</td>
-            <td><input type="password" id="confirmPwd" onchange="passwordVerify()"></td>
-            <td><p id="confirmPwdVerify"></p></td>
+            <td><input type="password" id="confirmPwd" onchange="passwordVerify()" required></td>
+            <td><span id="confirmPwdVerify"></span></td>
         </tr>
 
 
     </table>
-    <input  type="button" value="注册" onClick="register()">
     <button  onclick="reg()">注册</button>
     <input  type="button" value="返回" onClick="back()">
 </form>
