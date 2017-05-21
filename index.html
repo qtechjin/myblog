@@ -12,15 +12,13 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/my-style.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
@@ -29,18 +27,76 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+
         </script>
+        <!-- 渲染html5-->
+        <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
 
-    <p style="text-align: center"><input type="text" style="border-radius: 10px; text-align: center" />
-        <br /> <img src="http://www.runoob.com/images/pulpit.jpg" />
-    </p>
+        <div id="container" style="" >
+            <div id="header" style="background-color: #FFA500;">
+                <h1 style="margin-bottom: 0;">这是一个大标题</h1>
+            </div>
+            <div id="menu" style="background-color:#FFD700; height:500px;width: 20%;float:left;">
+                <b>菜单</b><br>
+                HTML<br>
+                CSS<br>
+                java<br>
+            </div>
+            <div id="content" style="background-color: #EEEEEE;height: 500px;width: 80%;float:left;">
+                这是正文！
+                <p style="text-align: center"><input type="text" style="border-radius: 10px; text-align: center" />
+                  </p>
+                <input id="welcome" type="text" list="text_list">
+                <datalist id="text_list">
+                    <option>你好</option>
+                    <option>我好</option>
+                </datalist>
+                <br>
+                <input type="radio" name="sex" value="Male">男<br>
+                <input type="radio" name="sex" value="Female">女<br>
+                <fieldset>
+                    <legend>个人信息:</legend>
+                    Name:<br>
+                    Email:<br>
+                    Date of birth:&lt;ssss &gt;
+                </fieldset>
+                <iframe name="child_page" src="404.html" width="80%" height="200px" frameborder="1px"></iframe>
+                <a href="https://qtechjin.github.io/myblog/" target="child_page">进入首页</a>
+                <br>
+                <p id="location">sss</p>
 
+            </div>
+            <div id="footer" style="background-color: #FFA500;clear: both;text-align: center">
+                版权&copy;刘进
+            </div>
+            <script>
+                $(function () {
+                  if(navigator.geolocation.getCurrentPosition(function (position) {
+                          $("#location").innerHTML = "纬度: " + position.coords.latitude +
+                              "<br>经度: " + position.coords.longitude;
+                      }, function showError(error) {
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                $("#location").innerHTML = "用户拒绝对获取地理位置的请求";
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                $("#location").innerHTML = "位置信息是不可用的";
+                                break;
+                            case error.TIMEOUT:
+                                $("#location").innerHTML = "请求用户地理位置超时";
+                                break;
+                            case error.UNKNOWN_ERR:
+                                $("#location").innerHTML = "未知错误";
+                                break;
+                        }
+                      })) {
+
+                  } else {
+                      $("#location").innerHTML = "浏览器不支持插件";
+                  }
+                });
+            </script>
+        </div>
 
     </body>
 </html>
