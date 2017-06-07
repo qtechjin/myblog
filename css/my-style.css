@@ -9,3 +9,102 @@ a:visited {color: #00FF00; }
 a:hover{
     color: #FF00FF;}
 a:active{color: #0000FF; }
+
+/*用来实现提示文本*/
+.tooltip{
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext{
+    visibility: hidden;
+    color: #000000;
+    width: 120px;
+    background-color: #b3d4fc;
+    border: 1px dotted black;
+    text-align: center;
+    padding: 5px 0;
+    /*定位提示文本的位置*/
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 100%;
+    /*淡入淡出效果*/
+    opacity: 0.2;
+    transition: opacity 1s;
+}
+.tooltip:hover .tooltiptext{
+    visibility: visible;
+    opacity: 0.8;
+}
+
+/*显示图片的一部分*/
+img.home {
+    width: 46px;
+    height: 44px;
+    background: url(../img/img_navsprites_hover.gif) 0 0;
+}
+img.prev {
+    width: 42px;
+    height: 44px;
+    background: url(../img/img_navsprites_hover.gif) -48px 0;
+}
+img.next {
+    width: 43px;
+    height: 44px;
+    background: url(../img/img_navsprites_hover.gif) -91px 0;
+}
+
+img.home:hover {
+    width: 46px;
+    height: 44px;
+    background: url(../img/img_navsprites_hover.gif) 0 44px;
+}
+img.prev:hover {
+    width: 42px;
+    height: 44px;
+    background: url(../img/img_navsprites_hover.gif) -48px 44px;
+}
+img.next:hover {
+    width: 43px;
+    height: 44px;
+    background: url(../img/img_navsprites_hover.gif) -91px 44px;
+}
+
+/*可以通过多个background来实现多个图片重叠
+* 不同的背景图像和图像用逗号隔开，所有的图片中显示在最顶端的为第一张。
+*/
+.background_content {
+    background-image: url(../img/img_flwr.gif), url(../img/paper.gif);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 15px;
+}
+
+/*字体定义*/
+@font-face {
+    font-family: 字体管家楷体;
+    src: url("../ttf/字体管家楷体.ttf");
+}
+@font-face {
+    font-family: 汉仪楷体;
+    src: url("../ttf/汉仪楷体S.ttf");
+}
+
+/*图片的处理*/
+img {
+    border:1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+/*图片链接*/
+.imglink {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: 0.3s;
+}
+.imglink:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}

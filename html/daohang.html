@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>下拉菜单实例|菜鸟教程(runoob.com)</title>
+    <meta charset="utf-8">
+    <style>
+        .daohang {
+            margin: 10px;
+            padding: 0px;
+            background-color: #9ccff4;
+        }
+        .dropdown {
+            display: inline-block;
+        }
+         .dropbtn {
+            display: inline-block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #2a9988;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="daohang">
+    <div class="dropdown">
+        <a href="index.html" class="dropbtn">主页 </a>
+    </div>
+    <div class="dropdown">
+        <a href="#" class="dropbtn">下拉菜单</a>
+        <div class="dropdown-content">
+            <a href="#">链接 1</a>
+            <a href="#">链接 2</a>
+            <a href="#">链接 3</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="#" class="dropbtn">链接</a>
+        <div class="dropdown-content">
+            <a href="https://www.baidu.com">百度</a>
+            <a href="https://www.google.com.hk">谷歌</a>
+            <a href="http://www.iqiyi.com">爱奇艺</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
