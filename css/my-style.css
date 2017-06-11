@@ -84,11 +84,11 @@ img.next:hover {
 /*字体定义*/
 @font-face {
     font-family: 字体管家楷体;
-    src: url("../ttf/字体管家楷体.ttf");
+    src: url("../ttf/");
 }
 @font-face {
     font-family: 汉仪楷体;
-    src: url("../ttf/汉仪楷体S.ttf");
+    src: url("../ttf/");
 }
 
 /*图片的处理*/
